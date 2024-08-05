@@ -17,7 +17,8 @@ public abstract class ChessPiece  extends Piece {
         return color;
     }
 
-    //Vai verificar se o target é um aliado ou openente de acordo com a cor ou também se tem alguma peça naquele local
+    //Vai verificar se o target é um aliado ou openente de acordo com a cor ou
+    // também se tem alguma peça naquele local
     protected boolean isThereOpponentPiece(Position position) {
         ChessPiece p = (ChessPiece)getBoard().piece(position);
         return p != null && p.getColor() != color;
