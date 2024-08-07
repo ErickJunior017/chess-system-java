@@ -17,6 +17,11 @@ public abstract class ChessPiece  extends Piece {
         return color;
     }
 
+    //Vai obter a posição da peça com
+    public ChessPosition getChessPosition(){
+        return ChessPosition.fromPosition(position);
+    }
+
     //Vai verificar se o target é um aliado ou openente de acordo com a cor ou
     // também se tem alguma peça naquele local
     protected boolean isThereOpponentPiece(Position position) {
