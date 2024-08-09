@@ -1,4 +1,4 @@
-package chess.chess.pieces;
+package chess.pieces;
 
 import boardgame.Board;
 import boardgame.Position;
@@ -41,12 +41,18 @@ public class Rook extends ChessPiece {
             mat[p.getRow()][p.getColumn()] = true;
             p.setColumn(p.getColumn() - 1);
         }
+        if(getBoard().positionExists(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+        }
 
         //Right
         p.setValues(position.getRow(), position.getColumn() + 1);
         while(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
             mat[p.getRow()][p.getColumn()] = true;
             p.setColumn(p.getColumn() + 1);
+        }
+        if(getBoard().positionExists(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
         }
 
         //bellow
