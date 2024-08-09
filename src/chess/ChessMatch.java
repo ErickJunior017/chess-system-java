@@ -89,7 +89,8 @@ public class ChessMatch {
     //metodo utilizado para remover a peça que se moveu da sua posição original(source) e devolvela na posição (target)
     //e a peça que foi capturada pela a outra peça que se moveu vai ser removida do tabuleiro
     private Piece makeMove(Position source, Position target){
-        Piece p = board.removePiece(source);
+        ChessPiece p = (ChessPiece) board.removePiece(source);
+        p.increaseMoveCount();
         Piece capturedPiece = board.removePiece(target);
         board.placePiece(p, target);
         if (capturedPiece != null){
@@ -101,7 +102,8 @@ public class ChessMatch {
 
     //Se eu mover uma peça com o rei em check então eu vou desfazer o movimento cum undoMove()
     private void undoMove(Position source, Position target, Piece capturedPiece){
-        Piece p = board.removePiece(target);
+        ChessPiece p = (ChessPiece) board.removePiece(target);
+        p.decreaseMoveCount();
         board.placePiece(p, source);
 
         if (capturedPiece != null){
